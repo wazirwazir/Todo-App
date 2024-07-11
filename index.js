@@ -61,16 +61,13 @@ function add() {
         eBtn.addEventListener('click',  () => {
             let label = eBtn.parentElement.children[1]
             let input = eBtn.parentElement.children[2]
-
             label.classList.toggle('hide')
             input.classList.toggle('hide')
             label.innerText = input.value;
            if (eBtn.innerText === 'Edit') {
                eBtn.innerText = 'Save'
-               console.log('it says save')
            } else if (eBtn.innerText === 'Save') {
                eBtn.innerText = 'Edit'
-               console.log('it says edit')
            }          
        })      
 })
