@@ -28,6 +28,7 @@ let eBtn;
 let doIndex = 0
 function add() {
     doIndex++
+    if (input.value.length >= 1) {
     let todoItems = document.createElement('li')
     let todoCheckbox = document.createElement('input')
     label = document.createElement('label')
@@ -74,16 +75,14 @@ function add() {
        })      
 })
 
-}
+    }}
 
 
 let boxes = document.querySelectorAll('radinput');
 addBtn.onclick = add
 input.addEventListener('keypress', function myevent(event) {
     if (event.keyCode === 13) {
-        if (input.value.length >= 1) {
             add();
-        }
     }
 })
 
