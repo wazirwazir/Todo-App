@@ -1,3 +1,8 @@
+*, * button, * input {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
 html {
     background-color: hsl(243, 85%, 5%);
 }
@@ -31,7 +36,7 @@ header {
 }
 .input {
     display: flex;
-    background-color: hsl(235, 19%, 35%);
+    background-color: transparent;
     padding: 0 10px;
     box-sizing: border-box;
     border-radius: 7px;
@@ -57,9 +62,27 @@ h1 {
     outline: none;
     box-sizing: border-box;
     color: hsl(236, 9%, 61%);
-    background-color: transparent;
-    border-radius: 10px;
-    
+    background-color: hsl(235, 19%, 35%);
+    border-radius: 10px 0 0 10px;
+}
+.add {
+    box-sizing: border-box;
+    border-radius: 0 10px 10px 0;
+    border: none;
+    width: 15%;
+    outline: none;
+    background-color: hsl(235, 13%, 48%);
+    margin-left: .3em;
+    font-weight: bolder;
+    cursor: pointer;
+    color: hsl(238, 36%, 86%);
+    transition-duration: 500ms;
+}
+.pink {
+    background-color: pink;
+}
+.add:hover {
+    background-color: hsl(235, 19%, 35%);
 }
 .tod {
     background-color: hsl(235, 19%, 35%);
@@ -84,9 +107,7 @@ label {
     color: white;
     font-size: 1rem;
     max-width: 300px;
-   
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+   }
 .einput {
     background-color: whitesmoke;
     width: 70%;

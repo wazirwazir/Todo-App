@@ -15,28 +15,25 @@ let body = document.querySelector('body')
 let things = document.querySelectorAll('.radinput')
 let allBtn = document.getElementById('all')
 let activeBtn = document.getElementById('active')
+let addBtn = document.getElementsByClassName('add')[0]
 let graphs;
 let list;
-let todoItems;
+
 let label;
-let todoCheckbox;
+
 let einput;
 let editBtn;
-
+let eBtn;
 //input todo items
 let doIndex = 0
 function add() {
     doIndex++
-    todoItems = document.createElement('li')
+    let todoItems = document.createElement('li')
+    let todoCheckbox = document.createElement('input')
     label = document.createElement('label')
     einput = document.createElement('input')
-    einput.setAttribute('id', 'einput')
     editBtn = document.createElement('button')
-    /* editBtn.setAttribute('type', 'button') */
-    editBtn.setAttribute('for', 'einput')
-    /* editBtn.setAttribute('value', 'Edit') */
     editBtn.innerText = 'Edit'
-    todoCheckbox = document.createElement('input')
     todoCheckbox.setAttribute('id', 'item' + doIndex)
     todoCheckbox.setAttribute('type', 'checkbox')
     einput.setAttribute('type', 'text')
@@ -51,15 +48,32 @@ function add() {
     todoItems.appendChild(einput)
     todoItems.appendChild(editBtn)
     label.appendChild(document.createTextNode(input.value))
+    einput.value = input.value
     tod.appendChild(todoItems)
     input.value = null   
     itemsQuantity.innerHTML = tod.childElementCount
     things = document.querySelectorAll('.radinput')
+
     
+    let eBtn = document.querySelectorAll('.edit')
+    eBtn.forEach(eBtn => {
+        eBtn.addEventListener('click',  () => {
+            eBtn.parentElement.children[1].classList.toggle('pink')
+           if (eBtn.innerText === 'Edit') {
+               eBtn.innerText = 'Save'
+               console.log('it says save')
+           } else if (eBtn.innerText === 'Save') {
+               eBtn.innerText = 'Edit'
+               console.log('it says edit')
+           }          
+       })      
+})
 
 }
-let boxes = document.querySelectorAll('radinput');
 
+
+let boxes = document.querySelectorAll('radinput');
+addBtn.onclick = add
 input.addEventListener('keypress', function myevent(event) {
     if (event.keyCode === 13) {
         if (input.value.length >= 1) {
@@ -100,27 +114,6 @@ function completed() {
 }
 
 
-editBtn.addEventListener( 'click', () => {
-    /* einput.classList.toggle('hide')
-    label.classList.toggle('hide')
-    einput.innerText = label.innerText
-    if (editBtn.innerText === 'Edit') {
-        editBtn.innerText = 'Save'
-    } */
-   console.log('hello world')
-}
-)
-
-
-/* let label = editBtn.parentElement.childNodes[1]
-let input = editBtn.parentElement.childNodes[2]
-input.classList.toggle('hide')
-label.classList.toggle('hide')
-input.innerText = label.innerText
-if (editBtn.innerText === 'Edit') {
-    editBtn.innerText = 'Save'
-} */
-
 function all() {
     things.forEach(things => {
         things.parentElement.classList.remove('hide')
@@ -136,8 +129,8 @@ function clear() {
         } 
     });
 }
+
 activeBtn.onclick = active
 completeBtn.onclick = completed
 allBtn.onclick = all
 clearBtn.onclick = clear
-editBtn.onclick = editor
