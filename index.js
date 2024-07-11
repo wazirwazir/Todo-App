@@ -54,11 +54,16 @@ function add() {
     itemsQuantity.innerHTML = tod.childElementCount
     things = document.querySelectorAll('.radinput')
 
-    
+
     let eBtn = document.querySelectorAll('.edit')
     eBtn.forEach(eBtn => {
         eBtn.addEventListener('click',  () => {
-            eBtn.parentElement.children[1].classList.toggle('pink')
+            let label = eBtn.parentElement.children[1]
+            let input = eBtn.parentElement.children[2]
+
+            label.classList.toggle('hide')
+            input.classList.toggle('hide')
+            label.innerText = input.value;
            if (eBtn.innerText === 'Edit') {
                eBtn.innerText = 'Save'
                console.log('it says save')
