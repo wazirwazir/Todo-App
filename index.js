@@ -27,36 +27,55 @@ let eBtn;
 //input todo items
 let doIndex = 0
 function add() {
+    const task = input.value.trim();
     doIndex++
     if (input.value.length >= 1) {
     let todoItems = document.createElement('li')
     let todoCheckbox = document.createElement('input')
-    label = document.createElement('label')
     einput = document.createElement('input')
     editBtn = document.createElement('button')
     editBtn.innerText = 'Edit'
-    todoCheckbox.setAttribute('id', 'item' + doIndex)
-    todoCheckbox.setAttribute('type', 'checkbox')
-    einput.setAttribute('type', 'text')
+    todoCheckbox.type = 'checkbox'
+    einput.type = 'text';
     editBtn.classList.add('edit')
     todoCheckbox.classList.add('radinput')
     einput.classList.add('einput')
-    einput.classList.add('hide')
-    label.setAttribute('for', 'item' + doIndex)
+    einput.disabled = true;
+    einput.value = task;
     todoItems.classList.add('blist')
     todoItems.appendChild(todoCheckbox)
-    todoItems.appendChild(label)
     todoItems.appendChild(einput)
     todoItems.appendChild(editBtn)
-    label.appendChild(document.createTextNode(input.value))
-    einput.value = input.value
     tod.appendChild(todoItems)
     input.value = null   
     itemsQuantity.innerHTML = tod.childElementCount
     things = document.querySelectorAll('.radinput')
 
+    editBtn.onclick = () => editTask(einput);
 
-    let eBtn = document.querySelectorAll('.edit')
+    function addTaskToDOM(taskText) {
+        const taskList = document.getElementById('taskList');
+        const li = document.createElement('li');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = taskText;
+        input.disabled = true;
+        
+        const editButton = document.createElement('button');
+        editButton.innerText = 'Edit';
+        editButton.onclick = () => editTask(einput);
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = 'Delete';
+        deleteButton.onclick = () => deleteTask(li, taskText);
+        
+        li.appendChild(input);
+        li.appendChild(editButton);
+        li.appendChild(deleteButton);
+        taskList.appendChild(li);
+    }
+    
+
+    /* let eBtn = document.querySelectorAll('.edit')
     eBtn.forEach(eBtn => {
         eBtn.addEventListener('click',  () => {
             let label = eBtn.parentElement.children[1]
@@ -70,7 +89,7 @@ function add() {
                eBtn.innerText = 'Edit'
            }          
        })      
-})
+}) */
 
     }}
 
@@ -82,6 +101,18 @@ input.addEventListener('keypress', function myevent(event) {
             add();
     }
 })
+
+
+function editTask(einput) {
+    if (einput.disabled) {
+        einput.disabled = false;
+        einput.focus();
+    } else {
+        einput.disabled = true;
+        
+    }
+}
+
 
 
 function active() {
