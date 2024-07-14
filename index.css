@@ -122,15 +122,9 @@ button:hover, .form button:focus {
     display: none;
 }
 
-/*Light Theme*/
-.lightback {
-    background-color: white;
-    color: black;
-}
-@media (max-width: 550px) {
+
+@media (max-width: 600px) {
     .wrapper {
-        min-width: 300px;
-        width: 80%;
         margin: 15vh auto 10px auto;
     }
 }
